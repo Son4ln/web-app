@@ -1,5 +1,5 @@
 <?php include '../views/header.php'; ?>
   <section>
-    Đây là products.
+    Đây là trang sản phẩm.
   </section>
 <?php include '../views/footer.php'; ?>
