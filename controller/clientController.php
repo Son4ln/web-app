@@ -1,8 +1,7 @@
 <?php
 switch ($action){
     case "home":
-        include "../views/home.php";
+        include "../views/client/home.php";
         break;
 }
-include "../controller/productsController.php";
 ?>

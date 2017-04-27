@@ -9,6 +9,7 @@ if(isset($_GET["action"])){
      }
      else
          $action="home";
+
  //include điều hướng vào đây
     include "../controller/clientController.php";
     include "../controller/adminController.php";
