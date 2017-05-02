@@ -2,7 +2,7 @@
 <?php include '../views/admin/nav.php'; ?>
     <!-- container here -->
     <div id="page-wrapper">
-        <P>Dash Board chưa biết làm j cả hihi.</P>
+    tạm thời chưa biết làm j ở đây
     </div>
     <!-- end container -->
 <?php include '../views/admin/footer.php'; ?>

@@ -1,0 +1,47 @@
+<?php
+	class Blogs
+	{
+
+		function __construct()
+		{
+
+		}
+		//lấy tất cả dữ liệu
+		public function getBlogs () {
+			$db = new connect();
+			$query = "select * from blogs";
+			$result = $db -> getList($query);
+			return $result;
+		}
+
+		//lấy dữ liệu thông qua id
+		public function getBlogById ($id) {
+			$db = new connect();
+			$query = "select * from blogs where blog_id = '$id'";
+			$result = $db ->getInstance($query);
+			return $result;
+		}
+
+		//thêm dữ liệu vào brands
+		public function addBlogs ($title, $imgs, $desc, $content){
+			$db = new connect();
+			$query = "insert into blogs values('','$title','$imgs','$desc', '$content')";
+			$db -> exec($query);
+		}
+
+		//cập nhập dữ liệu
+		public function updateBlog ($id, $title, $imgs, $desc, $content) {
+			$db = new connect();
+			$query = "update blogs set blog_title = '$title', featured_image = '$imgs', blog_description = '$desc', blog_content = '$content' where blog_id = '$id'";
+			$db -> exec($query);
+		}
+
+		//xóa dữ liệu
+		public function delBlog ($id) {
+			$db = new connect();
+			$query = "delete from blogs where blog_id = '$id'";
+			$db -> exec($query);
+		}
+
+	}
+?>
