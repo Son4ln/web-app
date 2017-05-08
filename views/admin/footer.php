@@ -12,6 +12,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="public/admin/dist/js/sb-admin-2.js"></script>
+    <script src="public/admin/js/admin.js"></script>
 
     <!-- DataTables JavaScript -->
     <script src="public/admin/bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
@@ -24,6 +25,7 @@
                 responsive: true
         });
     });
+
     </script>
 </body>
 

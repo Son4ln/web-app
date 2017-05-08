@@ -39,8 +39,8 @@
 				product_name = '$name',
 				product_image = '$img',
 				product_image1 = '$img1',
-				product_image2 = '$img1',
-				product_image3 = '$img2',
+				product_image2 = '$img2',
+				product_image3 = '$img3',
 				product_price =  '$price',
 				product_discount =  '$discount',
 				product_currency = '$currency',
@@ -63,7 +63,7 @@
 			$db -> exec($query);
 		}
 
-// HOMEPAGE		
+// HOMEPAGE
 		//đếm số hàng trong bảng products
 		public function countProduct (){
 			$db = new connect();
@@ -71,7 +71,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu mới nhất trong bảng products
 		public function getProductNew ($from, $to) {
 			$db = new connect();
@@ -79,7 +79,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu mới nhất có giá thấp - tăng dần trong bảng products
 		public function getProductNewDESC ($from, $to) {
 			$db = new connect();
@@ -87,7 +87,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu có giá giảm trong bảng products
 		public function getProductDiscount ($from, $to) {
 			$db = new connect();
@@ -95,7 +95,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng giảm giá trong bảng products
 		public function countProductDiscount (){
 			$db = new connect();
@@ -103,7 +103,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu có giảm giá nhiều nhất - giảm dần trong bảng products
 		public function getProductDiscountDESC ($from, $to) {
 			$db = new connect();
@@ -121,7 +121,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng trong bảng products theo feature_id
 		public function countProductF ($feature_id){
 			$db = new connect();
@@ -129,7 +129,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng trong bảng products theo origin_id
 		public function countProductO ($origin_id){
 			$db = new connect();
@@ -145,7 +145,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng trong bảng products theo category_id và brand_id
 		public function countProductCategoryB ($category_id, $brand_id){
 			$db = new connect();
@@ -153,7 +153,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng trong bảng products theo category_id và feature_id
 		public function countProductCategoryF ($category_id, $feature_id){
 			$db = new connect();
@@ -161,7 +161,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng trong bảng products theo category_id và origin_id
 		public function countProductCategoryO ($category_id, $origin_id){
 			$db = new connect();
@@ -169,7 +169,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy tổng sản phẩm trong kho trong bảng
 		public function getInStockProduct (){
 			$db = new connect();
@@ -177,7 +177,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy tổng sản phẩm trong kho trong bảng
 		public function getInStockProductB ($brand_id){
 			$db = new connect();
@@ -185,7 +185,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy tổng sản phẩm trong kho trong bảng
 		public function getInStockProductF ($feature_id){
 			$db = new connect();
@@ -193,7 +193,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy tổng sản phẩm trong kho trong bảng
 		public function getInStockProductO ($origin_id){
 			$db = new connect();
@@ -201,7 +201,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy tổng sản phẩm trong kho theo category_id
 		public function getInStockProductCategory ($category_id){
 			$db = new connect();
@@ -209,7 +209,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy tổng sản phẩm trong kho theo category_id và brand_id
 		public function getInStockProductCategoryB ($category_id, $brand_id){
 			$db = new connect();
@@ -217,7 +217,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy tổng sản phẩm trong kho theo category_id và feature_id
 		public function getInStockProductCategoryF ($category_id, $feature_id){
 			$db = new connect();
@@ -225,7 +225,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy tổng sản phẩm trong kho theo category_id và origin_id
 		public function getInStockProductCategoryO ($category_id, $origin_id){
 			$db = new connect();
@@ -233,7 +233,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products
 		public function getProductLimit ($from, $to){
 			$db = new connect();
@@ -241,7 +241,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo brand_id
 		public function getProductLimitB ($brand_id, $from, $to){
 			$db = new connect();
@@ -249,7 +249,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo feature_id
 		public function getProductLimitF ($feature_id, $from, $to){
 			$db = new connect();
@@ -257,7 +257,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo origin_id
 		public function getProductLimitO ($origin_id, $from, $to){
 			$db = new connect();
@@ -265,15 +265,15 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
-		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo category_id 
+
+		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo category_id
 		public function getProductCategoryLimit ($category_id, $from, $to){
 			$db = new connect();
 			$query = "select * from products where category_id = '$category_id' limit $from, $to";
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo category_id và brand_id
 		public function getProductCategoryLimitB ($category_id, $brand_id, $from, $to){
 			$db = new connect();
@@ -281,7 +281,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo category_id và feature_id
 		public function getProductCategoryLimitF ($category_id, $feature_id, $from, $to){
 			$db = new connect();
@@ -289,7 +289,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo category_id và origin_id
 		public function getProductCategoryLimitO ($category_id, $origin_id, $from, $to){
 			$db = new connect();
@@ -297,7 +297,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		// BRAND
 		//lấy dữ liệu sản phẩm theo từng thương hiệu trong bảng products
 		public function getProductBrand () {
@@ -306,15 +306,15 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//đếm số lượng sản phẩm theo từng thương hiệu trong bảng products
 		public function countProductBrandById ($brand_id) {
 			$db = new connect();
 			$query = "select count(product_id) from  products where brand_id = '$brand_id'";
 			$result = $db -> getInstance($query);
 			return $result;
-		}	
-		
+		}
+
 		//lấy dữ liệu sản phẩm theo từng thương hiệu của mỗi loại
 		public function getProductCategoryBrand ($category_id) {
 			$db = new connect();
@@ -339,7 +339,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//đếm số lượng sản phẩm theo từng tính năng trong bảng products
 		public function countProductFeatureById ($feature_id) {
 			$db = new connect();
@@ -372,7 +372,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//đếm số lượng sản phẩm theo từng tính năng trong bảng products
 		public function countProductOriginById ($origin_id) {
 			$db = new connect();
@@ -396,11 +396,11 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
-//END PRODUCT	
 
-		
-			
-		
+//END PRODUCT
+
+
+
+
 	}
 ?>

@@ -38,6 +38,14 @@
 				where user_id = '$id'";
 			$db -> exec($query);
 		}
+		//update phân quyền.
+		public function permission ($id, $permis) {
+			$db = new connect();
+			$query = "update users set
+				permission = '$permis'
+				where user_id = '$id'";
+			$db -> exec($query);
+		}
 		//xóa dữ liệu bảng thông qua id
 		public function delUser ($id){
 			$db = new connect();
