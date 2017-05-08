@@ -42,6 +42,14 @@
 			$query = "delete from blogs where blog_id = '$id'";
 			$db -> exec($query);
 		}
+		
+		//lấy giới hạn số hàng dữ liệu từ bảng blogs
+		public function getBlogSlide ($from, $to) {
+			$db = new connect();
+			$query = "select * from blogs ORDER BY blog_id DESC limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
 
 	}
 ?>

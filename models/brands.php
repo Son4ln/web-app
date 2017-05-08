@@ -42,6 +42,23 @@
 			$query = "delete from brands where brand_id = '$id'";
 			$db -> exec($query);
 		}
-
+		
+		//đếm số hàng trong bảng products
+		public function countBrand (){
+			$db = new connect();
+			$query = "select count('brand_id') from brands";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//lấy giới hạn số hàng dữ liệu từ bảng brands
+		public function getBrandSlide ($from, $to) {
+			$db = new connect();
+			$query = "select products.brand_id, brand_name, brand_image, count('brand_id') as count_brand from brands JOIN products ON brands.brand_id=products.brand_id group by products.brand_id ORDER BY count_brand DESC limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		
 	}
 ?>

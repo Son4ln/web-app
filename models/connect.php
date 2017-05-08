@@ -8,7 +8,7 @@
             {
                 $dsn='mysql:host=localhost;dbname=web-app';
                 $user='root';
-                $pass='123';
+                $pass='';
                 $this->db=new PDO($dsn,$user,$pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
             }
 

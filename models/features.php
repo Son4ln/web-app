@@ -18,15 +18,15 @@
 			return $result;
 		}
 		//thêm dữ liệu vào bảng
-		public function addFeature ($name, $cateId){
+		public function addFeature ($name){
 			$db = new connect();
-			$query = "insert into product_features values('','$name','$cateId')";
+			$query = "insert into product_features values('','$name')";
 			$db -> exec($query);
 		}
 		//cập nhật dữ liệu cho bảng
-		public function updateFeature ($id, $name, $cateId) {
+		public function updateFeature ($id, $name) {
 			$db = new connect();
-			$query = "update product_features set feature_name = '$name', category_id = '$cateId' where feature_id = '$id'";
+			$query = "update product_features set feature_name = '$name' where feature_id = '$id'";
 			$db -> exec($query);
 		}
 		//xóa dữ liệu bảng thông qua id
