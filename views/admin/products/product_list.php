@@ -2,6 +2,11 @@
 <?php include '../views/admin/nav.php'; ?>
     <!-- container here -->
  <!-- Page Content -->
+        <style type="text/css">
+            #showMes {
+                display: none
+            }
+        </style>
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
@@ -11,7 +16,7 @@
                         </h1>
                     </div>
                     <div class="col-lg-12">
-                        <?php echo $success; ?>
+                        <div class="alert" id="showMes"></div>
                     </div>
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">

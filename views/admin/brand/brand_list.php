@@ -10,7 +10,7 @@
                         </h1>
                     </div>
                     <div class="col-lg-12">
-                        <?php echo $success; ?>
+                        <div class="alert" id="showMes"></div>
                     </div>
 
                     <?php

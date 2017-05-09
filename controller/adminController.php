@@ -5,7 +5,6 @@ switch ($action){
     break;
 
   case 'brandList':
-    $success = "";
     include "../views/admin/brand/brand_list.php";
     break;
 
@@ -19,13 +18,25 @@ switch ($action){
     $brand = new Brands();
     $id = $_GET['id'];
     $brand -> delBrand($id);
-    $success = showSuccess($mes);
-    include "../views/admin/brand/brand_list.php";
+    $mes = "Xóa Brand thành công";
+    $action = 'brandList';
+    $typeOfMes = 'alert-success';
+    redirect($action,$mes,$typeOfMes);
     break;
 
   case 'brandAddAction':
     $brand = new Brands();
     $brandName = $_POST['brandName'];
+    if (empty($_FILES['brandImg'])
+        || $_FILES['brandImg']['type'] != 'image/jpeg'
+        && $_FILES['brandImg']['type'] != 'image/png'
+        && $_FILES['brandImg']['type'] != 'image/gif')
+      {
+        $mes = "Vui lòng chọn hình ảnh (jpg,png,gif)";
+        $alert = showAlert($mes);
+        include "../views/admin/brand/brand_add.php";
+        break;
+    }
     if(isset($_FILES['brandImg'])){
         $brandImg= time().'-'.$_FILES['brandImg']['name'];
         $source=$_FILES['brandImg']['tmp_name'];
@@ -37,20 +48,13 @@ switch ($action){
         $mes = "Vui lòng nhập Brand Name";
         $alert = showAlert($mes);
         include "../views/admin/brand/brand_add.php";
-      }elseif (empty($_FILES['brandImg'])
-        || $_FILES['brandImg']['type'] != 'image/jpeg'
-        && $_FILES['brandImg']['type'] != 'image/png'
-        && $_FILES['brandImg']['type'] != 'image/gif')
-      {
-        $mes = "Vui lòng chọn hình ảnh (jpg,png,gif)";
-        $alert = showAlert($mes);
-        include "../views/admin/brand/brand_add.php";
       }
       else {
         $brand -> addBrands($brandName, $brandImg);
         $mes = 'Thêm Brand thành công';
-        $success = showSuccess($mes);
-        include "../views/admin/brand/brand_list.php";
+        $action = 'brandList';
+        $typeOfMes = 'alert-success';
+        redirect($action,$mes,$typeOfMes);
       }
     }
     break;
@@ -66,6 +70,17 @@ switch ($action){
     $id = $_POST['brandId'];
     $brandName = $_POST['brandName'];
     if(!empty($_FILES['brandImg']['name'])){
+      if (
+         $_FILES['brandImg']['type'] != 'image/jpeg'
+        && $_FILES['brandImg']['type'] != 'image/png'
+        && $_FILES['brandImg']['type'] != 'image/gif'
+        )
+      {
+        $mes = "Vui lòng chọn hình ảnh (jpg,png,gif)";
+        $alert = showAlert($mes);
+        include "../views/admin/brand/brand_add.php";
+        break;
+    }
      if(isset($_FILES['brandImg'])){
         $brandImg= time().'-'.$_FILES['brandImg']['name'];
         $source=$_FILES['brandImg']['tmp_name'];
@@ -86,14 +101,13 @@ switch ($action){
      {
       $brand -> updateBrand($id, $brandName, $brandImg);
       $mes = "Sửa Brand thành công";
-      $success = showSuccess($mes);
-      include "../views/admin/brand/brand_list.php";
+      $action = 'brandList';
+      $typeOfMes = 'alert-success';
+      redirect($action,$mes,$typeOfMes);
      }
      break;
 
   case 'userList':
-    $success = "";
-    $alert = "";
   	include "../views/admin/users/user_list.php";
   	break;
 
@@ -114,6 +128,16 @@ switch ($action){
     $address = $_POST['txtAddr'];
     $permis = $_POST['permis'];
     //upload hình ảnh
+    if(empty($_FILES['txtAva'])
+        || $_FILES['txtAva']['type'] != 'image/jpeg'
+        && $_FILES['txtAva']['type'] != 'image/png'
+        && $_FILES['txtAva']['type'] != 'image/gif'
+        ){
+          $mes = 'Vui chọn hình ảnh (jpg,png,gif)';
+          $alert = showAlert($mes);
+          include "../views/admin/users/user_add.php";
+          break;
+      }
     if(isset($_FILES['txtAva'])){
         $avat= time().'-'.$_FILES['txtAva']['name'];
         $source=$_FILES['txtAva']['tmp_name'];
@@ -133,20 +157,13 @@ switch ($action){
         $mes = 'Vui lòng nhập đầy đủ thông tin';
         $alert = showAlert($mes);
         include "../views/admin/user_add.php";
-      }else if(empty($_FILES['txtAva'])
-        || $_FILES['txtAva']['type'] != 'image/jpeg'
-        && $_FILES['txtAva']['type'] != 'image/png'
-        && $_FILES['txtAva']['type'] != 'image/gif'
-        ){
-          $mes = 'Vui chọn hình ảnh (jpg,png,gif)';
-          $alert = showAlert($mes);
-          include "../views/admin/users/user_add.php";
       }
       else{
         $mes = "Thêm User thành công";
         $user->addUser($name, $username, $password, $email, $phone, $address, $avat, $permis);
-        $success = showSuccess($mes);
-        include "../views/admin/users/user_list.php";
+        $action = 'userList';
+        $typeOfMes = 'alert-success';
+        redirect($action,$mes,$typeOfMes);
       }
 
     }
@@ -166,21 +183,22 @@ switch ($action){
     $permis = $_POST['permis'];
     $user -> permission($id, $permis);
     $mes = "Phân quyền thành công";
-    $success = showSuccess($mes);
-    include "../views/admin/users/user_list.php";
+    $action = 'userList';
+    $typeOfMes = 'alert-success';
+    redirect($action,$mes,$typeOfMes);
     break;
 
   case 'delUser':
     $mes = "Xóa User thành công";
-    $success = showSuccess($mes);
     $user = new Users();
     $id = $_GET['id'];
     $user -> delUser($id);
-    include "../views/admin/users/user_list.php";
+    $action = 'userList';
+    $typeOfMes = 'alert-success';
+    redirect($action,$mes,$typeOfMes);
     break;
 
   case 'bannerList':
-    $success = "";
     include "../views/admin/banner/banner_list.php";
     break;
 
@@ -191,6 +209,16 @@ switch ($action){
 
   case 'bannerAddAction':
       $slider = new sliderShow();
+      if(empty($_FILES['bImages'])
+          || $_FILES['bImages']['type'] != 'image/jpeg'
+        && $_FILES['bImages']['type'] != 'image/png'
+        && $_FILES['bImages']['type'] != 'image/gif'
+        ){
+        $mes = "Vui lòng chọn hình ảnh (jpg, png, gif)";
+        $alert = showAlert($mes);
+        include "../views/admin/banner/banner_add.php";
+        break;
+      }
       if(isset($_FILES['bImages'])){
         $img = time().'-'.$_FILES['bImages']['name'];
         $source = $_FILES['bImages']['tmp_name'];
@@ -204,20 +232,11 @@ switch ($action){
         include "../views/admin/banner/banner_add.php";
         break;
       }
-      if(empty($_FILES['bImages'])
-          || $_FILES['bImages']['type'] != 'image/jpeg'
-        && $_FILES['bImages']['type'] != 'image/png'
-        && $_FILES['bImages']['type'] != 'image/gif'
-        ){
-        $mes = "Vui lòng chọn hình ảnh (jpg, png, gif)";
-        $alert = showAlert($mes);
-        include "../views/admin/banner/banner_add.php";
-        break;
-      }
       $slider -> addSlideShow($img, $link);
       $mes = "Thêm Banner thành công";
-      $success = showSuccess($mes);
-       include "../views/admin/banner/banner_list.php";
+      $action = 'bannerList';
+      $typeOfMes = 'alert-success';
+      redirect($action,$mes,$typeOfMes);
       break;
 
   case 'bannerEdit':
@@ -230,6 +249,16 @@ switch ($action){
     $slider = new sliderShow();
     $id = $_POST['bId'];
     if(!empty($_FILES['bImages']['name'])){
+      if(
+        $_FILES['bImages']['type'] != 'image/jpeg'
+        && $_FILES['bImages']['type'] != 'image/png'
+        && $_FILES['bImages']['type'] != 'image/gif'
+        ){
+        $mes = "Vui lòng chọn hình ảnh (jpg, png, gif)";
+        $alert = showAlert($mes);
+        include "../views/admin/banner/banner_add.php";
+        break;
+      }
       if(isset($_FILES['bImages'])){
         $img = time().'-'.$_FILES['bImages']['name'];
         $source = $_FILES['bImages']['tmp_name'];
@@ -249,8 +278,9 @@ switch ($action){
     }
     $slider -> updateSlideShow($id, $img, $link);
     $mes = "Sửa Banner thành công";
-    $success = showSuccess($mes);
-    include "../views/admin/banner/banner_list.php";
+    $action = 'bannerList';
+    $typeOfMes = 'alert-success';
+    redirect($action,$mes,$typeOfMes);
     break;
 
   case 'bannerdel':
@@ -258,8 +288,9 @@ switch ($action){
     $slider = new sliderShow();
     $slider -> delSlideShow($id);
     $mes = "Xóa Banner thành công";
-    $success = showSuccess($mes);
-    include "../views/admin/banner/banner_list.php";
+    $action = 'bannerList';
+    $typeOfMes = 'alert-success';
+    redirect($action,$mes,$typeOfMes);
     break;
 
   case 'productList':
@@ -365,8 +396,6 @@ switch ($action){
     }else{
       $img3 = $_POST['oldImages4'];
     }
-
-
     $price = $_POST['txtPrice'];
     $discount = $_POST['txtDiscount'];
     $currency = $_POST['txtCurrency'];
@@ -378,27 +407,25 @@ switch ($action){
     $brand = $_POST['brandId'];
     $origin = $_POST['originId'];
     $user = 1;
-
-
-
-
-
-
-
     $products -> updateProduct($id, $name, $img, $img1, $img2, $img3, $price, $discount, $currency, $desc, $detail, $stock, $cate, $feature, $brand, $origin, $user);
 
-    $mes = "Sửa sản phẩm thành công";
-    $success = showSuccess($mes);
-    include "../views/admin/products/product_list.php";
+    // $mes = "Sửa sản phẩm thành công";
+    // $success = showSuccess($mes);
+    // include "../views/admin/products/product_list.php";
+    $action = 'productList';
+    $mes = 'Sửa sản phẩm thành công';
+    $typeOfMes = 'alert-success';
+    redirect($action,$mes,$typeOfMes);
     break;
 
   case 'productDel':
     $products = new Products();
     $id = $_GET['id'];
     $products -> delProduct($id);
-    $mes = "Xóa sản phẩm thành công";
-    $success = showSuccess($mes);
-    include "../views/admin/products/product_list.php";
+    $action = 'productList';
+    $mes = 'Xóa sản phẩm thành công';
+    $typeOfMes = 'alert-success';
+    redirect($action,$mes,$typeOfMes);
     break;
 
   case 'cateList':
@@ -424,8 +451,9 @@ switch ($action){
 
       $cate ->addCategory($name,$parent);
       $mes = "Thêm Categories thành công";
-      $success = showSuccess($mes);
-      include "../views/admin/categories/cate_list.php";
+      $action = 'cateList';
+      $typeOfMes = 'alert-success';
+      redirect($action,$mes,$typeOfMes);
       break;
 
   case 'cateEdit':
@@ -447,8 +475,9 @@ switch ($action){
     }
     $cate -> updateCategory($id, $cateName, $parent);
     $mes = "Sửa Categories thành công";
-    $success = showSuccess($mes);
-    include "../views/admin/categories/cate_list.php";
+    $action = 'cateList';
+    $typeOfMes = 'alert-success';
+    redirect($action,$mes,$typeOfMes);
     break;
 
   case 'cateDel':
@@ -456,8 +485,9 @@ switch ($action){
     $id = $_GET['id'];
     $cate -> delCategory($id);
     $mes = "Xóa Categories thành công";
-    $success = showSuccess($mes);
-    include "../views/admin/categories/cate_list.php";
+    $action = 'cateList';
+    $typeOfMes = 'alert-success';
+    redirect($action,$mes,$typeOfMes);
     break;
 }
 ?>

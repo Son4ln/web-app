@@ -29,4 +29,11 @@
 		}
 	}
 
+	function redirect($action,$mes,$typeOfMes){
+	echo "<script>
+			window.location.href = '?action=$action';
+			sessionStorage.mes = '$mes';
+			sessionStorage.typeOfMes = '$typeOfMes';
+		</script>";
+	}
 ?>

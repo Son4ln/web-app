@@ -20,7 +20,7 @@
             $action = "contact";
             include '../views/client/contact.php';
             break;
-		
+
 		// Product
 		case "product":
             $action = "product";
@@ -64,6 +64,6 @@
 			$all = $_GET['all'];
             include '../views/client/product.php';
             break;
-		
+
 	}
 ?>

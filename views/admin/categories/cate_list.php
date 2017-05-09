@@ -14,7 +14,7 @@
                         <div class="alert alert-danger" id="alert"></div>
                     </div> -->
                     <div class="col-lg-12">
-                        <?php echo $success; ?>
+                        <div class="alert" id="showMes"></div>
                     </div>
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
