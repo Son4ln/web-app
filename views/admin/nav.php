@@ -50,37 +50,13 @@
                             <a href="?action=admin"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bold fa-fw"></i> Brands<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="?action=brandList">List Brands</a>
+                                    <a href="?action=brandList">List Category</a>
                                 </li>
                                 <li>
-                                    <a href="?action=brandAdd">Add Brand</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <!-- <li>
-                            <a href="#"><i class="fa fa-table fa-fw"></i> Product Group<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="?action=groupList">List Group</a>
-                                </li>
-                                <li>
-                                    <a href="?action=groupAdd">Add Group</a>
-                                </li>
-                            </ul>
-
-                        </li> -->
-                        <li>
-                            <a href="#"><i class="fa fa-database fa-fw"></i> Categories<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="?action=cateList">List Categories</a>
-                                </li>
-                                <li>
-                                    <a href="?action=cateAdd">Add Category</a>
+                                    <a href="?action=brandAdd">Add Category</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -105,18 +81,6 @@
                                 </li>
                                 <li>
                                     <a href="?action=userAdd">Add User</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-file-image-o fa-fw"></i> Banner<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="?action=bannerList">List Banner</a>
-                                </li>
-                                <li>
-                                    <a href="?action=bannerAdd">Add Banner</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

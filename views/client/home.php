@@ -79,7 +79,7 @@
 					</a>
 				</h2>
 				<ul class="pull-right">
-					<li><a href="">Xem tất cả</a></li>
+					<li><a href="?action=viewAllProduct&id=<?php echo $set['title_id']; ?>">Xem tất cả</a></li>
 				</ul>
 				<div class="clearfix"></div>        
 			</div>
@@ -114,12 +114,12 @@
 						<div class="col-md-3"> 
 							<div class="product-warp-box">
 								<div class="feature-image">
-									<a href="" tabindex="-1">
+									<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1">
 									<img src="<?php echo '../controller/public/client/images/product/'.$set['product_image']; ?>" alt="<?php echo $set['product_name']; ?>">
 									</a>
 									</div>
 									<div class="feature-title">
-										<a href="" tabindex="-1"><?php echo $set['product_name']; ?></a>
+										<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1"><?php echo $set['product_name']; ?></a>
 									</div>
 									<div class="feature-price">
 									<?php
@@ -193,12 +193,12 @@
 						<div class="col-md-3"> 
 							<div class="product-warp-box">
 								<div class="feature-image">
-									<a href="" tabindex="-1">
+									<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1">
 									<img src="<?php echo '../controller/public/client/images/product/'.$set['product_image']; ?>" alt="<?php echo $set['product_name']; ?>" title="<?php echo $set['product_name']; ?>">
 									</a>
 									</div>
 									<div class="feature-title">
-										<a href="" tabindex="-1"><?php echo $set['product_name']; ?></a>
+										<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1"><?php echo $set['product_name']; ?></a>
 									</div>
 									<div class="feature-price">
 									<?php
@@ -272,12 +272,12 @@
 						<div class="col-md-3"> 
 							<div class="product-warp-box">
 								<div class="feature-image">
-									<a href="" tabindex="-1">
+									<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1">
 									<img src="<?php echo '../controller/public/client/images/product/'.$set['product_image']; ?>" alt="<?php echo $set['product_name']; ?>" title="<?php echo $set['product_name']; ?>">
 									</a>
 									</div>
 									<div class="feature-title">
-										<a href="" tabindex="-1"><?php echo $set['product_name']; ?></a>
+										<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1"><?php echo $set['product_name']; ?></a>
 									</div>
 									<div class="feature-price">
 									<?php
@@ -341,12 +341,12 @@
 						<div class="col-md-3"> 
 							<div class="product-warp-box">
 								<div class="feature-image">
-									<a href="" tabindex="-1">
+									<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1">
 									<img src="<?php echo '../controller/public/client/images/product/'.$set['product_image']; ?>" alt="<?php echo $set['product_name']; ?>" title="<?php echo $set['product_name']; ?>">
 									</a>
 									</div>
 									<div class="feature-title">
-										<a href="" tabindex="-1"><?php echo $set['product_name']; ?></a>
+										<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1"><?php echo $set['product_name']; ?></a>
 									</div>
 									<div class="feature-price">
 									<?php

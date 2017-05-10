@@ -79,6 +79,30 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
+		
+		//lấy dữ liệu mới nhất trong bảng products
+		public function getProductNewB ($brand_id, $from, $to) {
+			$db = new connect();
+			$query = "select * from products where brand_id = '$brand_id' ORDER BY product_id DESC limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//lấy dữ liệu mới nhất trong bảng products
+		public function getProductNewF ($feature_id, $from, $to) {
+			$db = new connect();
+			$query = "select * from products where feature_id = '$feature_id' ORDER BY product_id DESC limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//lấy dữ liệu mới nhất trong bảng products
+		public function getProductNewO ($origin_id, $from, $to) {
+			$db = new connect();
+			$query = "select * from products where origin_id = '$origin_id' ORDER BY product_id DESC limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
 
 		//lấy dữ liệu mới nhất có giá thấp - tăng dần trong bảng products
 		public function getProductNewDESC ($from, $to) {
@@ -111,9 +135,35 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
+		
+		//lấy dữ liệu có giảm giá trong bảng products theo brand_id
+		public function getProductDiscountB ($brand_id, $from, $to) {
+			$db = new connect();
+			$query = "select * from products where brand_id = '$brand_id' and product_discount not like 0 ORDER BY product_id DESC limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//lấy dữ liệu có giảm giá trong bảng products theo feature_id
+		public function getProductDiscountF ($feature_id, $from, $to) {
+			$db = new connect();
+			$query = "select * from products where feature_id = '$feature_id' and product_discount not like 0 ORDER BY product_id DESC limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//lấy dữ liệu có giảm giá trong bảng products theo origin_id
+		public function getProductDiscountO ($origin_id, $from, $to) {
+			$db = new connect();
+			$query = "select * from products where origin_id = '$origin_id' and product_discount not like 0 ORDER BY product_id DESC limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
 // END HOMEPAGE
 
 //PRODUCT
+
+		//PRODUCT SELECTED FROM THE MENU
 		//đếm số hàng trong bảng products theo brand_id
 		public function countProductB ($brand_id){
 			$db = new connect();
@@ -169,67 +219,67 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-
-		//lấy tổng sản phẩm trong kho trong bảng
-		public function getInStockProduct (){
+		
+		//đếm số hàng trong bảng products theo category_id với parent_id = 0
+		public function countProductCategoryArrayParent ($category_id){
 			$db = new connect();
-			$query = "select sum(product_in_stock) from products";
+			$query = "select count(product_id) from products where category_id in (select category_id from categories where parent_id in (select category_id from categories where parent_id = '$category_id'))";
 			$result = $db -> getInstance($query);
 			return $result;
 		}
 
-		//lấy tổng sản phẩm trong kho trong bảng
-		public function getInStockProductB ($brand_id){
+		//đếm số hàng trong bảng products theo category_id với parent_id = 0 và brand_id
+		public function countProductCategoryArrayParentB ($category_id, $brand_id){
 			$db = new connect();
-			$query = "select sum(product_in_stock) from products where brand_id = '$brand_id'";
+			$query = "select count(product_id) from products where category_id in (select category_id from categories where parent_id in (select category_id from categories where parent_id = '$category_id')) and brand_id = '$brand_id'";
 			$result = $db -> getInstance($query);
 			return $result;
 		}
 
-		//lấy tổng sản phẩm trong kho trong bảng
-		public function getInStockProductF ($feature_id){
+		//đếm số hàng trong bảng products theo category_id với parent_id = 0 và feature_id
+		public function countProductCategoryArrayParentF ($category_id, $feature_id){
 			$db = new connect();
-			$query = "select sum(product_in_stock) from products where feature_id = '$feature_id'";
+			$query = "select count(product_id) from products where category_id in (select category_id from categories where parent_id in (select category_id from categories where parent_id = '$category_id')) and feature_id = '$feature_id'";
 			$result = $db -> getInstance($query);
 			return $result;
 		}
 
-		//lấy tổng sản phẩm trong kho trong bảng
-		public function getInStockProductO ($origin_id){
+		//đếm số hàng trong bảng products theo category_id với parent_id = 0 và origin_id
+		public function countProductCategoryArrayParentO ($category_id, $origin_id){
 			$db = new connect();
-			$query = "select sum(product_in_stock) from products where origin_id = '$origin_id'";
+			$query = "select count(product_id) from products where category_id in (select category_id from categories where parent_id in (select category_id from categories where parent_id = '$category_id')) and origin_id = '$origin_id'";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//đếm số hàng trong bảng products theo mảng category_id
+		public function countProductCategoryArray ($category_id){
+			$db = new connect();
+			$query = "select count(product_id) from products where category_id in (select category_id from categories where parent_id = '$category_id')";
 			$result = $db -> getInstance($query);
 			return $result;
 		}
 
-		//lấy tổng sản phẩm trong kho theo category_id
-		public function getInStockProductCategory ($category_id){
+		//đếm số hàng trong bảng products theo mảng category_id và brand_id
+		public function countProductCategoryArrayB ($category_id, $brand_id){
 			$db = new connect();
-			$query = "select sum(product_in_stock) from products where category_id = '$category_id' group by category_id";
+			$query = "select count(product_id) from products where category_id in (select category_id from categories where parent_id = '$category_id') and brand_id = '$brand_id'";
 			$result = $db -> getInstance($query);
 			return $result;
 		}
 
-		//lấy tổng sản phẩm trong kho theo category_id và brand_id
-		public function getInStockProductCategoryB ($category_id, $brand_id){
+		//đếm số hàng trong bảng products theo mảng category_id và feature_id
+		public function countProductCategoryArrayF ($category_id, $feature_id){
 			$db = new connect();
-			$query = "select sum(product_in_stock) from products where category_id = '$category_id' and brand_id = '$brand_id' group by category_id";
+			$query = "select count(product_id) from products where category_id in (select category_id from categories where parent_id = '$category_id') and feature_id = '$feature_id'";
 			$result = $db -> getInstance($query);
 			return $result;
 		}
 
-		//lấy tổng sản phẩm trong kho theo category_id và feature_id
-		public function getInStockProductCategoryF ($category_id, $feature_id){
+		//đếm số hàng trong bảng products theo mảng category_id và origin_id
+		public function countProductCategoryArrayO ($category_id, $origin_id){
 			$db = new connect();
-			$query = "select sum(product_in_stock) from products where category_id = '$category_id' and feature_id = '$feature_id' group by category_id";
-			$result = $db -> getInstance($query);
-			return $result;
-		}
-
-		//lấy tổng sản phẩm trong kho theo category_id và origin_id
-		public function getInStockProductCategoryO ($category_id, $origin_id){
-			$db = new connect();
-			$query = "select sum(product_in_stock) from products where category_id = '$category_id' and origin_id = '$origin_id' group by category_id";
+			$query = "select count(product_id) from products where category_id in (select category_id from categories where parent_id = '$category_id') and origin_id = '$origin_id'";
 			$result = $db -> getInstance($query);
 			return $result;
 		}
@@ -297,7 +347,121 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
+		
+		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo mảng category_id với parent_id = 0
+		public function getProductCategoryLimitArrayParent ($category_id, $from, $to){
+			$db = new connect();
+			$query = "select * from products where category_id in (select category_id from categories where parent_id in (select category_id from categories where parent_id = '$category_id')) limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
 
+		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo mảng category_id với parent_id = 0 và brand_id
+		public function getProductCategoryLimitArrayParentB ($category_id, $brand_id, $from, $to){
+			$db = new connect();
+			$query = "select * from products where category_id in (select category_id from categories where parent_id in (select category_id from categories where parent_id = '$category_id')) and brand_id = '$brand_id' limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
+
+		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo mảngcategory_id với parent_id = 0 và feature_id
+		public function getProductCategoryLimitArrayParentF ($category_id, $feature_id, $from, $to){
+			$db = new connect();
+			$query = "select * from products where category_id in (select category_id from categories where parent_id in (select category_id from categories where parent_id = '$category_id')) and feature_id = '$feature_id' limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
+
+		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo mảng category_id với parent_id = 0 và origin_id
+		public function getProductCategoryLimitArrayParentO ($category_id, $origin_id, $from, $to){
+			$db = new connect();
+			$query = "select * from products where category_id in (select category_id from categories where parent_id in (select category_id from categories where parent_id = '$category_id')) and origin_id = '$origin_id' limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo mảng category_id
+		public function getProductCategoryLimitArray ($category_id, $from, $to){
+			$db = new connect();
+			$query = "select * from products where category_id in (select category_id from categories where parent_id = '$category_id') limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
+
+		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo mảng category_id và brand_id
+		public function getProductCategoryLimitArrayB ($category_id, $brand_id, $from, $to){
+			$db = new connect();
+			$query = "select * from products where category_id in (select category_id from categories where parent_id = '$category_id') and brand_id = '$brand_id' limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
+
+		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo mảngcategory_id và feature_id
+		public function getProductCategoryLimitArrayF ($category_id, $feature_id, $from, $to){
+			$db = new connect();
+			$query = "select * from products where category_id in (select category_id from categories where parent_id = '$category_id') and feature_id = '$feature_id' limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
+
+		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo mảng category_id và origin_id
+		public function getProductCategoryLimitArrayO ($category_id, $origin_id, $from, $to){
+			$db = new connect();
+			$query = "select * from products where category_id in (select category_id from categories where parent_id = '$category_id') and origin_id = '$origin_id' limit $from, $to";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//PRODUCT SELECTED FROM THE HOMEPAGE
+		//đếm số hàng giảm giá trong bảng products theo brand_id
+		public function countProductDiscountB ($brand_id){
+			$db = new connect();
+			$query = "select count(product_id) from products where brand_id = '$brand_id' and product_discount not like 0";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//đếm số hàng giảm giá trong bảng products theo feature_id
+		public function countProductDiscountF ($feature_id){
+			$db = new connect();
+			$query = "select count(product_id) from products where feature_id = '$feature_id' and product_discount not like 0";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//đếm số hàng giảm giá trong bảng products theo origin_id
+		public function countProductDiscountO ($origin_id){
+			$db = new connect();
+			$query = "select count(product_id) from products where origin_id = '$origin_id' and product_discount not like 0";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//lấy dữ liệu sản phẩm theo từng thương hiệu trong bảng products
+		public function getProductDiscountBrand () {
+			$db = new connect();
+			$query = "select * from  brands JOIN products ON brands.brand_id = products.brand_id where product_discount not like 0 group by products.brand_id";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//lấy dữ liệu sản phẩm theo từng tính năng trong bảng products
+		public function getProductDiscountFeature () {
+			$db = new connect();
+			$query = "select * from  product_features JOIN products ON product_features.feature_id = products.feature_id where product_discount not like 0 group by products.feature_id";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//lấy dữ liệu sản phẩm theo từng nguồn gốc trong bảng products
+		public function getProductDiscountOrigin () {
+			$db = new connect();
+			$query = "select * from  in_origin JOIN products ON in_origin.origin_id = products.origin_id where product_discount not like 0 group by products.origin_id";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		
 		// BRAND
 		//lấy dữ liệu sản phẩm theo từng thương hiệu trong bảng products
 		public function getProductBrand () {
@@ -322,11 +486,43 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
+		
+		//lấy dữ liệu sản phẩm theo từng thương hiệu của một mảng loại với parent_id = 0
+		public function getProductCategoryBrandArrayParent ($category_id) {
+			$db = new connect();
+			$query = "select * from  brands JOIN products ON brands.brand_id = products.brand_id where category_id in (select category_id from categories where parent_id in (select category_id from categories where parent_id = '$category_id')) group by products.brand_id";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//lấy dữ liệu sản phẩm theo từng thương hiệu của một mảng loại
+		public function getProductCategoryBrandArray ($category_id) {
+			$db = new connect();
+			$query = "select * from  brands JOIN products ON brands.brand_id = products.brand_id where category_id in (select category_id from categories where parent_id = '$category_id') group by products.brand_id";
+			$result = $db -> getList($query);
+			return $result;
+		}
 
 		//đếm số lượng sản phẩm theo từng thương hiệu của mỗi loại
 		public function countProductCategoryBrandById ($category_id, $brand_id) {
 			$db = new connect();
 			$query = "select count(product_id) from  products where category_id = '$category_id' and  brand_id = '$brand_id'";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//đếm số lượng sản phẩm theo từng thương hiệu của một loại mảng với parent_id = 0
+		public function countProductCategoryBrandByIdArrayParent ($category_id, $brand_id) {
+			$db = new connect();
+			$query = "select count(product_id) from  products where brand_id = '$brand_id' and category_id in (select category_id from categories where parent_id in (select category_id from categories where parent_id = '$category_id')) ";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//đếm số lượng sản phẩm theo từng thương hiệu của một loại mảng
+		public function countProductCategoryBrandByIdArray ($category_id, $brand_id) {
+			$db = new connect();
+			$query = "select count(product_id) from  products where brand_id = '$brand_id' and category_id in (select category_id from categories where parent_id = '$category_id') ";
 			$result = $db -> getInstance($query);
 			return $result;
 		}
@@ -355,11 +551,43 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
+		
+		//lấy dữ liệu sản phẩm theo từng tính năng của một mảng loại với parent_id = 0
+		public function getProductCategoryFeatureArrayParent ($category_id) {
+			$db = new connect();
+			$query = "select * from  product_features JOIN products ON product_features.feature_id = products.feature_id where category_id in (select category_id from categories where parent_id in (select category_id from categories where parent_id = '$category_id')) group by products.feature_id";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//lấy dữ liệu sản phẩm theo từng tính năng của một mảng loại
+		public function getProductCategoryFeatureArray ($category_id) {
+			$db = new connect();
+			$query = "select * from  product_features JOIN products ON product_features.feature_id = products.feature_id where category_id in (select category_id from categories where parent_id = '$category_id') group by products.feature_id";
+			$result = $db -> getList($query);
+			return $result;
+		}
 
 		//đếm số lượng sản phẩm theo từng tính năng của mỗi loại
 		public function countProductCategoryFeatureById ($category_id, $feature_id) {
 			$db = new connect();
 			$query = "select count(product_id) from  products where category_id = '$category_id' and  feature_id = '$feature_id'";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//đếm số lượng sản phẩm theo từng tính năng của một mảng loại với parent_id = 0
+		public function countProductCategoryFeatureByIdArrayParent ($category_id, $feature_id) {
+			$db = new connect();
+			$query = "select count(product_id) from  products where feature_id = '$feature_id' and category_id in (select category_id from categories where parent_id in (select category_id from categories where parent_id = '$category_id'))";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//đếm số lượng sản phẩm theo từng tính năng của một mảng loại
+		public function countProductCategoryFeatureByIdArray ($category_id, $feature_id) {
+			$db = new connect();
+			$query = "select count(product_id) from  products where feature_id = '$feature_id' and category_id in (select category_id from categories where parent_id = '$category_id')";
 			$result = $db -> getInstance($query);
 			return $result;
 		}
@@ -388,11 +616,43 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
+		
+		//lấy dữ liệu sản phẩm theo từng tính năng của một mảng loại với parent_id = 0
+		public function getProductCategoryOriginArrayParent ($category_id) {
+			$db = new connect();
+			$query = "select * from  in_origin JOIN products ON in_origin.origin_id = products.origin_id where category_id in (select category_id from categories where parent_id in (select category_id from categories where parent_id = '$category_id')) group by products.origin_id";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//lấy dữ liệu sản phẩm theo từng tính năng của một mảng loại
+		public function getProductCategoryOriginArray ($category_id) {
+			$db = new connect();
+			$query = "select * from  in_origin JOIN products ON in_origin.origin_id = products.origin_id where category_id in (select category_id from categories where parent_id = '$category_id') group by products.origin_id";
+			$result = $db -> getList($query);
+			return $result;
+		}
 
 		//đếm số lượng sản phẩm theo từng tính năng của mỗi loại
 		public function countProductCategoryOriginById ($category_id, $origin_id) {
 			$db = new connect();
 			$query = "select count(product_id) from  products where category_id = '$category_id' and  origin_id = '$origin_id'";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//đếm số lượng sản phẩm theo từng tính năng của một mảng loại với parent_id = 0
+		public function countProductCategoryOriginByIdArrayParent ($category_id, $origin_id) {
+			$db = new connect();
+			$query = "select count(product_id) from  products where category_id in (select category_id from categories where parent_id in (select category_id from categories where parent_id = '$category_id')) and  origin_id = '$origin_id'";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//đếm số lượng sản phẩm theo từng tính năng của một mảng loại
+		public function countProductCategoryOriginByIdArray ($category_id, $origin_id) {
+			$db = new connect();
+			$query = "select count(product_id) from  products where category_id in (select category_id from categories where parent_id = '$category_id') and  origin_id = '$origin_id'";
 			$result = $db -> getInstance($query);
 			return $result;
 		}

@@ -54,6 +54,7 @@
 											
 									?>
 												<ul class="dl-submenu">
+													<li><a href="?action=category&id=<?php echo $set['category_id']; ?>">Tất cả sản phẩm</a></li>
 									<?php
 												foreach($showMenuChild as $result){
 									?>

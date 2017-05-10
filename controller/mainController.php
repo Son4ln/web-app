@@ -15,8 +15,6 @@ include "../models/showTitle.php";
 include "../models/titles.php";
 include "../models/users.php";
 include "../models/libs.php";
-include "../models/group.php";
-include "../models/class.php";
 
 //khởi tạo action
 if(isset($_GET["action"])){

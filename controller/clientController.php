@@ -8,11 +8,21 @@
             $action="about";
             include '../views/client/about.php';
             break;
+		case "viewProduct":
+            $action="viewProduct";
+			$client_id = $_GET['id'];
+            include '../views/client/detail_product.php';
+            break;
 		case "blog":
             $action = "blog";
             include '../views/client/blog.php';
             break;
-		case "brands":
+		case "viewBlog":
+            $action="viewBlog";
+			$client_id = $_GET['id'];
+            include '../views/client/detail_blog.php';
+            break;
+		case "brand":
             $action = "brand";
             include '../views/client/brand.php';
             break;
@@ -62,6 +72,23 @@
 			$client_id = $_GET['id'];
 			$client_origin = $_GET['origin'];
 			$all = $_GET['all'];
+            include '../views/client/product.php';
+            break;
+		case "viewAllProduct":
+            $action = "viewAllProduct";
+			$client_title = $_GET['id'];
+			if(isset($_GET['brand'])){
+				$client_brand = $_GET['brand'];
+			}
+			if(isset($_GET['feature'])){
+				$client_feature = $_GET['feature'];
+			}
+			if(isset($_GET['origin'])){
+				$client_origin = $_GET['origin'];
+			}
+			if(isset($_GET['all'])){
+				$all = $_GET['all'];
+			}
             include '../views/client/product.php';
             break;
 		

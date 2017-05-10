@@ -50,6 +50,15 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
+		
+		//đếm số tin trong bảng blogs
+		public function getCountBlogSlide() {
+			$db = new connect();
+			$query = "select count(blog_id) from blogs";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+
 
 	}
 ?>
