@@ -30,7 +30,7 @@
             $action = "contact";
             include '../views/client/contact.php';
             break;
-		
+
 		// Product
 		case "product":
             $action = "product";
@@ -74,6 +74,7 @@
 			$all = $_GET['all'];
             include '../views/client/product.php';
             break;
+<<<<<<< HEAD
 		case "viewAllProduct":
             $action = "viewAllProduct";
 			$client_title = $_GET['id'];
@@ -92,5 +93,8 @@
             include '../views/client/product.php';
             break;
 		
+=======
+
+>>>>>>> 970dc3500c59f4c9455cb633d063c7bf865d0286
 	}
 ?>

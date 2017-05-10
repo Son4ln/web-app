@@ -22,7 +22,7 @@
 			return $result;
 		}
 
-		//thêm dữ liệu vào brands
+		//thêm dữ liệu vào
 		public function addBlogs ($title, $imgs, $desc, $content){
 			$db = new connect();
 			$query = "insert into blogs values('','$title','$imgs','$desc', '$content')";

@@ -10,6 +10,12 @@
                             <small>List</small>
                         </h1>
                     </div>
+<<<<<<< HEAD:views/admin/product_list.php
+=======
+                    <div class="col-lg-12">
+                        <div class="alert" id="showMes"></div>
+                    </div>
+>>>>>>> 970dc3500c59f4c9455cb633d063c7bf865d0286:views/admin/banner/banner_list.php
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
@@ -25,6 +31,7 @@
                         </thead>
                         <tbody>
                             <tr class="odd gradeX" align="center">
+<<<<<<< HEAD:views/admin/product_list.php
                                 <td>1</td>
                                 <td>Áo Thun Nana</td>
                                 <td>200.000 VNĐ</td>
@@ -32,6 +39,13 @@
                                 <td>Hiện</td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="?action=productEdit">Edit</a></td>
+=======
+                                <td><?php echo $key['slide_id']; ?></td>
+                                <td><img src="public/client/images/slideshow/<?php echo $key['slide_image']; ?>" width="150px"></td>
+                                <td><?php echo $key['slide_link']; ?></td>
+
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return delConfirm('Bạn có chắc muốn xóa Banner này')" href="?action=bannerdel&id=<?php echo $key['slide_id']; ?>"> Delete</a> | <i class="fa fa-pencil fa-fw"></i> <a href="?action=bannerEdit&id=<?php echo $key['slide_id']; ?>">Edit</a></td>
+>>>>>>> 970dc3500c59f4c9455cb633d063c7bf865d0286:views/admin/banner/banner_list.php
                             </tr>
                         </tbody>
                     </table>

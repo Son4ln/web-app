@@ -85,6 +85,34 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+<<<<<<< HEAD
+=======
+                        <li>
+                            <a href="#"><i class="fa fa-file-image-o fa-fw"></i> Banner<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="?action=bannerList">List Banner</a>
+                                </li>
+                                <li>
+                                    <a href="?action=bannerAdd">Add Banner</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-newspaper-o fa-fw"></i> Blogs<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="?action=blogList">List Blogs</a>
+                                </li>
+                                <li>
+                                    <a href="?action=blogAdd">Add Blog</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+>>>>>>> 970dc3500c59f4c9455cb633d063c7bf865d0286
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

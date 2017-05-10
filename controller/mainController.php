@@ -30,15 +30,19 @@ if(isset($_GET["action"])){
      $ava_dir='public/images/user-avatar';
      $ava_dir_path=getcwd().DIRECTORY_SEPARATOR.$ava_dir;
      // khởi tạo link banner
-     $banner_dir='public/images/banner';
+     $banner_dir='public/client/images/slideshow';
      $banner_dir_path=getcwd().DIRECTORY_SEPARATOR.$banner_dir;
 
      // khởi tạo link brand
-     $brand_dir='public/images/brands';
+     $brand_dir='public/client/images/brand';
      $brand_dir_path=getcwd().DIRECTORY_SEPARATOR.$brand_dir;
      //khỏi tạo link ảnh sản phẩm
-     $product_dir='public/images/products';
+     $product_dir='public/client/images/product';
      $product_dir_path=getcwd().DIRECTORY_SEPARATOR.$product_dir;
+
+     //khỏi tạo link ảnh blog
+     $blog_dir='public/client/images/blog';
+     $blog_dir_path=getcwd().DIRECTORY_SEPARATOR.$blog_dir;
 
  //include điều hướng vào đây
     include "../controller/clientController.php";

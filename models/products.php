@@ -23,24 +23,23 @@
 		}
 
 		//thêm dữ liệu vào brands
-		public function addProducts ($name, $img, $img1, $img2, $img3, $price, $discount, $currency, $desc, $detail, $inStock, $categoriesId, $featureId, $brandId, $originId, $userId){
+		public function addProducts ($name, $img, $img1, $img2, $price, $discount, $currency, $desc, $detail, $inStock, $categoriesId, $featureId, $brandId, $originId, $userId){
 			$db = new connect();
 			$query = "insert into products values(
-				'', '$name', '$img', '$img1', '$img2', '$img3', '$price', '$discount', '$currency', '$desc',
+				'', '$name', '$img', '$img1', '$img2', '$price', '$discount', '$currency', '$desc',
 				'$detail', '$inStock', '$categoriesId', '$featureId', '$brandId', '$originId', '$userId'
 			)";
 			$db -> exec($query);
 		}
 
 		//cập nhập dữ liệu
-		public function updateProduct ($id, $name, $img, $img1, $img2, $img3, $price, $discount, $currency, $desc, $detail, $inStock, $categoriesId, $featureId, $brandId, $originId, $userId) {
+		public function updateProduct ($id, $name, $img, $img1, $img2, $price, $discount, $currency, $desc, $detail, $inStock, $categoriesId, $featureId, $brandId, $originId, $userId) {
 			$db = new connect();
 			$query = "update products set
 				product_name = '$name',
 				product_image = '$img',
 				product_image1 = '$img1',
 				product_image2 = '$img2',
-				product_image3 = '$img3',
 				product_price =  '$price',
 				product_discount =  '$discount',
 				product_currency = '$currency',
