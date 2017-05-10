@@ -24,7 +24,7 @@
                             <div class="form-group">
                                 <label>Ảnh cũ</label>
                                 <input class="form-control" type="hidden" name="oldImg" value="<?php echo $data['slide_image']; ?>"/>
-                                <img src="public/images/banner/<?php echo $data['slide_image']; ?>" width="150">
+                                <img src="public/client/images/slideshow/<?php echo $data['slide_image']; ?>" width="150">
                             </div>
                             <div class="form-group">
                                 <label>Images</label>

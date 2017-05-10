@@ -32,7 +32,7 @@
                             ?>
                             <tr class="odd gradeX" align="center">
                                 <td><?php echo $key['slide_id']; ?></td>
-                                <td><img src="public/images/banner/<?php echo $key['slide_image']; ?>" width="150px"></td>
+                                <td><img src="public/client/images/slideshow/<?php echo $key['slide_image']; ?>" width="150px"></td>
                                 <td><?php echo $key['slide_link']; ?></td>
 
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return delConfirm('Bạn có chắc muốn xóa Banner này')" href="?action=bannerdel&id=<?php echo $key['slide_id']; ?>"> Delete</a> | <i class="fa fa-pencil fa-fw"></i> <a href="?action=bannerEdit&id=<?php echo $key['slide_id']; ?>">Edit</a></td>

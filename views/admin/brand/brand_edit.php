@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group">
                             <label>Ảnh cũ</label>
-                            <img src="public/images/brands/<?php echo $data['brand_image']; ?>" width="150px">
+                            <img src="public/client/images/brand/<?php echo $data['brand_image']; ?>" width="150px">
                             <input class="form-control" type="hidden" value="<?php echo $data['brand_image']; ?>" name="oldImg" placeholder="Please Enter Category Order" />
                         </div>
                         <div class="form-group">

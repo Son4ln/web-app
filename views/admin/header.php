@@ -25,6 +25,11 @@
 
     <!-- DataTables Responsive CSS -->
     <link href="public/admin/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+    <!-- <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script> -->
+    <script src="public/admin/js/plugin/ckeditor/ckeditor.js"></script>
+    <script src="public/admin/js/plugin/ckfinder/ckfinder.js"></script>
+    <script src="public/admin/js/plugin/func_ckfinder.js"></script>
+
 </head>
 
 <body>

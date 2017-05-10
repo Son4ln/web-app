@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label>Ảnh cũ 1</label>
-                                        <img src="public/images/products/<?php echo $result['product_image']; ?>" width="100">
+                                        <img src="public/client/images/product/<?php echo $result['product_image']; ?>" width="100">
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label>Ảnh cũ 2</label>
-                                        <img src="public/images/products/<?php echo $result['product_image1']; ?>" width="100">
+                                        <img src="public/client/images/product/<?php echo $result['product_image1']; ?>" width="100">
                                     </div>
                                 </div>
 
@@ -69,21 +69,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label>Ảnh cũ 3</label>
-                                        <img src="public/images/products/<?php echo $result['product_image2']; ?>" width="100">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Ảnh 4</label>
-                                        <input type="file" name="fImages4">
-                                        <input type="hidden" value="<?php echo $result['product_image3']; ?>" name="oldImages4">
-                                    </div>
-                                    <div class="col-md-6">
-                                    <label>Ảnh cũ 4</label>
-                                        <img src="public/images/products/<?php echo $result['product_image3']; ?>" width="100">
+                                        <img src="public/client/images/product/<?php echo $result['product_image2']; ?>" width="100">
                                     </div>
                                 </div>
 
@@ -109,6 +95,7 @@
                                 <textarea name="txtDetail" class="form-control" rows="3">
                                     <?php echo $result['product_detail']; ?>
                                 </textarea>
+                                <script type="text/javascript">CKEDITOR.replace( 'txtDetail');</script>
                             </div>
                             <div class="form-group">
                                 <label>Product in stock</label>

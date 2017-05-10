@@ -40,7 +40,7 @@
                             <tr class="odd gradeX" align="center">
                                 <td><?php echo $value['product_id']; ?></td>
                                 <td><?php echo $value['product_name']; ?></td>
-                                <td><img src="public/images/products/<?php echo $value['product_image']; ?>" width="100"></td>
+                                <td><img src="public/client/images/product/<?php echo $value['product_image']; ?>" width="100"></td>
                                 <td><?php echo $value['product_price']; ?></td>
                                 <td><?php
                                     $cate = new Categories();

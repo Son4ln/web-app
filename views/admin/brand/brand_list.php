@@ -34,7 +34,7 @@
                             <tr class="odd gradeX" align="center">
                                 <td><?php echo $key['brand_id']; ?></td>
                                 <td><?php echo $key['brand_name']; ?></td>
-                                <td><img src="public/images/brands/<?php echo $key['brand_image']; ?>" width="100px"></td>
+                                <td><img src="public/client/images/brand/<?php echo $key['brand_image']; ?>" width="100px"></td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return delConfirm('Bạn có chắc muốn xóa Brand này. Toàn bộ sản phẩm liên quan cũng sẽ bị xóa')" href="?action=brandDel&id=<?php echo $key['brand_id']; ?>"> Delete</a> | <i class="fa fa-pencil fa-fw"></i> <a href="?action=brandEdit&id=<?php echo $key['brand_id']; ?>">Edit</a></td>
                             </tr>
                             <?php } ?>
