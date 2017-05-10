@@ -85,8 +85,11 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Stashed changes
                         <li>
                             <a href="#"><i class="fa fa-file-image-o fa-fw"></i> Banner<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -112,7 +115,10 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+<<<<<<< Updated upstream
 >>>>>>> 970dc3500c59f4c9455cb633d063c7bf865d0286
+=======
+>>>>>>> Stashed changes
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

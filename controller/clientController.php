@@ -74,7 +74,11 @@
 			$all = $_GET['all'];
             include '../views/client/product.php';
             break;
+<<<<<<< Updated upstream
 <<<<<<< HEAD
+=======
+			
+>>>>>>> Stashed changes
 		case "viewAllProduct":
             $action = "viewAllProduct";
 			$client_title = $_GET['id'];
@@ -92,9 +96,12 @@
 			}
             include '../views/client/product.php';
             break;
+<<<<<<< Updated upstream
 		
 =======
 
 >>>>>>> 970dc3500c59f4c9455cb633d063c7bf865d0286
+=======
+>>>>>>> Stashed changes
 	}
 ?>
